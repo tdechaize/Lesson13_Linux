@@ -1,0 +1,7 @@
+<map id="log_print" name="log_print">
+<area shape="rect" id="node1" title=" " alt="" coords="271,81,341,108"/>
+<area shape="rect" id="node2" href="$lesson13_8c.html#a3f50a3778a5799e1dd9cf4547cf73ad3" title="Fonction DrawGLScene : fonction generant l&#39;affichage attendu avec des instructions OpenGL." alt="" coords="110,5,217,32"/>
+<area shape="rect" id="node3" href="$lesson13_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Programme Main obligatoire pour les programmes sous Linux (OpenGL en mode console)." alt="" coords="5,81,56,108"/>
+<area shape="rect" id="node4" href="$lesson13_8c.html#ac8d2055368b431f82f03449410409ad0" title="Fonction InitGL : fonction gerant les caractéristiques de base de la scéne lorsque avec des instructi..." alt="" coords="135,107,192,133"/>
+<area shape="rect" id="node5" href="$lesson13_8c.html#aaeedc5c1c90eff3a2950f1a2dbbdac6c" title="Fonction ReSizeGLScene : fonction gerant les nouvelles dimensions de la scéne lorsque l&#39;utilisateur a..." alt="" coords="104,157,223,184"/>
+</map>

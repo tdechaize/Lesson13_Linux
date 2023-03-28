@@ -1,0 +1,5 @@
+<map id="InitGL" name="InitGL">
+<area shape="rect" id="node1" title="Fonction InitGL : fonction gerant les caractéristiques de base de la scéne lorsque avec des instructi..." alt="" coords="5,31,63,57"/>
+<area shape="rect" id="node2" href="$lesson13_8c.html#aa90fba1d494d9474c883fbb29fe0ed53" title="Fonction BuildFont : fonction chargeant une fonte de caractères à l&#39;aide d&#39;instruction Wayland pour u..." alt="" coords="111,5,188,32"/>
+<area shape="rect" id="node3" href="$logger_8c.html#abd2d19eeef46a8184a2302d33c6c7397" title=" " alt="" coords="114,56,185,83"/>
+</map>

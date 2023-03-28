@@ -1,0 +1,786 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_lesson13_8c" xml:lang="en-US">
+<title>/home/thierry/Sources/Opengl/Lesson13/src/lesson13.c File Reference</title>
+<indexterm><primary>/home/thierry/Sources/Opengl/Lesson13/src/lesson13.c</primary></indexterm>
+<para>
+
+<para>Ouvre une simple fenêtre Wayland on Linux et affiche un texte coloré qui se déplace sur l&apos;écran à l&apos;aide d&apos;une fonte spécifique avec OpenGL + glut. </para>
+ 
+</para>
+<programlisting>#include &lt;GL/glut.h&gt;
+#include &lt;GL/gl.h&gt;
+#include &lt;GL/glu.h&gt;
+#include &lt;GL/glx.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+#include &quot;logger.h&quot;
+</programlisting>Include dependency graph for lesson13.c:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_lesson13_8c_1a78c99ffd76a7bb3c8c74db76207e9ab4">_XOPEN_SOURCE</link>   600</para>
+</listitem>
+            <listitem><para>#define <link linkend="_lesson13_8c_1afe4b0e625372cd38ec60150d6f5594b8">ESCAPE</link>   27</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>GLvoid <link linkend="_lesson13_8c_1aa90fba1d494d9474c883fbb29fe0ed53">BuildFont</link> (GLvoid)</para>
+
+<para>Fonction BuildFont : fonction chargeant une fonte de caractères à l&apos;aide d&apos;instruction Wayland pour un affichage attendu dans la fenêtre OpenGL. </para>
+</listitem>
+            <listitem><para>GLvoid <link linkend="_lesson13_8c_1a29fd6b15a498074df9565150f5212475">KillFont</link> (GLvoid)</para>
+
+<para>Fonction KillFont : fonction détruisant la zone mémoire dédiée à la fonte de cacactère. </para>
+</listitem>
+            <listitem><para>GLvoid <link linkend="_lesson13_8c_1a5142ea286f09abcefcc9d8d1ad681811">glPrint</link> (char *text)</para>
+
+<para>Fonction glPrint: fonction affichant le texte transmis en paramètre sur la fenêtre OpenGL. </para>
+</listitem>
+            <listitem><para>void <link linkend="_lesson13_8c_1ac8d2055368b431f82f03449410409ad0">InitGL</link> (int Width, int Height)</para>
+
+<para>Fonction InitGL : fonction gerant les caractéristiques de base de la scéne lorsque avec des instructions OpenGL (arrière plan, profondeur, type de profondeur, ...) </para>
+</listitem>
+            <listitem><para>void <link linkend="_lesson13_8c_1aaeedc5c1c90eff3a2950f1a2dbbdac6c">ReSizeGLScene</link> (int Width, int Height)</para>
+
+<para>Fonction ReSizeGLScene : fonction gerant les nouvelles dimensions de la scéne lorsque l&apos;utilisateur agit sur un redimensionnement de la fenêtre. </para>
+</listitem>
+            <listitem><para>void <link linkend="_lesson13_8c_1a3f50a3778a5799e1dd9cf4547cf73ad3">DrawGLScene</link> ()</para>
+
+<para>Fonction DrawGLScene : fonction generant l&apos;affichage attendu avec des instructions OpenGL. </para>
+</listitem>
+            <listitem><para>void <link linkend="_lesson13_8c_1ae49b22892a1276b5e664963496a34177">keyPressed</link> (unsigned char key, int x, int y)</para>
+
+<para>Fonction keyPressed : fonction permettant de connaître quelle touche a été tapée au clavier. </para>
+</listitem>
+            <listitem><para>int <link linkend="_lesson13_8c_1a3c04138a5bfe5d72780bb7e82a18e627">main</link> (int argc, char **argv)</para>
+
+<para>Programme Main obligatoire pour les programmes sous Linux (OpenGL en mode console). </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>char * <link linkend="_lesson13_8c_1ae9fb3d4767f6255c70dcd5123bbf2f54">level_debug</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_lesson13_8c_1a65ba7a0b8164c01b33d92b9ab0f2af03">window</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_lesson13_8c_1af7a035f1a720fb7a4a279410f376800b">nFullScreen</link> =0</para>
+</listitem>
+            <listitem><para>GLuint <link linkend="_lesson13_8c_1ae4cbdc51d2d504c24c15b22cf9861e8d">base</link></para>
+</listitem>
+            <listitem><para>GLfloat <link linkend="_lesson13_8c_1a59cefa520aeacb29855dd1153f4b0efa">cnt1</link></para>
+</listitem>
+            <listitem><para>GLfloat <link linkend="_lesson13_8c_1a2498a8c276b89c99342a1f4ac31e4670">cnt2</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Ouvre une simple fenêtre Wayland on Linux et affiche un texte coloré qui se déplace sur l&apos;écran à l&apos;aide d&apos;une fonte spécifique avec OpenGL + glut. </para>
+
+<para>Comments manageable by Doxygen</para>
+
+<para>Modified smoothly by Thierry DECHAIZE</para>
+
+<para>Paradigm : obtain one source (only one !) compatible for multiple free C Compilers and provide for all users an development environment on Linux (64 bits compatible), the great Code::Blocks manager (version 20.03), and don&apos;t use glaux.lib or glaux.dll.</para>
+
+<para>a) gcc 11.3.0 (32 and 64 bits) version officielle : commande pour l&apos;installation sur Linux Mint -&gt; sudo apt-get install freeglut3 libglew-dev gcc g++ mesa-common-dev build-essential libglew2.2 libglm-dev binutils libc6 libc6-dev gcc-multilib g++-multilib; option -m32 to 32 bits ; no option to 64 bits b) CLANG version 14.0.6 (32 et 64 bits), adossé aux environnements gcc : commande pour l&apos;installation sur Linux Mint -&gt; sudo apt-get install llvm clang ; options pour la compilation et l&apos;édition de liens -&gt; &#8211;target=i686-pc-linux-gnu (32 bits) &#8211;target=x86_64-pc-linux-gnu (64 bits)</para>
+
+<para>Date : 2023/03/28</para>
+
+<para><formalpara><title>Author</title>
+
+<para>Jeff Molofee ( NeHe ) originely, ported to Linux/glut by Richard Campbell, and after by Thierry Dechaize on Linux Mint </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>2.0.1.0 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>28 mars 2023</para>
+</formalpara>
+Ce programme gére plusieurs événements : le clic sur le bouton &quot;Fermé&quot; de la fenêtre, la sortie par la touche ESC ou par les touches &quot;q&quot; ou &quot;Q&quot; [Quit]</para>
+
+<para>les touches &quot;t&quot; ou &quot;T&quot; qui active ou non le &quot;twinkle&quot;, les touches &quot;f&quot; ou &quot;F&quot; qui active ou non le &quot;Full Screen&quot;. </para>
+</section>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_lesson13_8c_1a78c99ffd76a7bb3c8c74db76207e9ab4"/>    <section>
+    <title>_XOPEN_SOURCE</title>
+<indexterm><primary>_XOPEN_SOURCE</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>_XOPEN_SOURCE</secondary></indexterm>
+<para><computeroutput>#define _XOPEN_SOURCE   600</computeroutput></para>    </section><anchor xml:id="_lesson13_8c_1afe4b0e625372cd38ec60150d6f5594b8"/>    <section>
+    <title>ESCAPE</title>
+<indexterm><primary>ESCAPE</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>ESCAPE</secondary></indexterm>
+<para><computeroutput>#define ESCAPE   27</computeroutput></para></section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_lesson13_8c_1aa90fba1d494d9474c883fbb29fe0ed53"/>    <section>
+    <title>BuildFont()</title>
+<indexterm><primary>BuildFont</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>BuildFont</secondary></indexterm>
+<para><computeroutput>GLvoid BuildFont (GLvoid )</computeroutput></para><para>
+
+<para>Fonction BuildFont : fonction chargeant une fonte de caractères à l&apos;aide d&apos;instruction Wayland pour un affichage attendu dans la fenêtre OpenGL. </para>
+</para>
+
+<para>This function construct font of character with instructions Wayland to use in window OpenGL</para>
+
+<para>Aucun paramètre dans ce cas de figure car tout est géré directement à l&apos;intérieur de cette fonction de construction / chargement. <formalpara><title>Returns</title>
+
+<para>GLvoid aucun retour. </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_aa90fba1d494d9474c883fbb29fe0ed53_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_lesson13_8c_1a3f50a3778a5799e1dd9cf4547cf73ad3"/>    <section>
+    <title>DrawGLScene()</title>
+<indexterm><primary>DrawGLScene</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>DrawGLScene</secondary></indexterm>
+<para><computeroutput>void DrawGLScene ( )</computeroutput></para><para>
+
+<para>Fonction DrawGLScene : fonction generant l&apos;affichage attendu avec des instructions OpenGL. </para>
+</para>
+
+<para>This function generate the scene with instructions OpenGL</para>
+
+<para>Aucun paramètre dans ce cas de figure car tout est géré directement à l&apos;intérieur de cette fonction d&apos;affichage. </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_a3f50a3778a5799e1dd9cf4547cf73ad3_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_a3f50a3778a5799e1dd9cf4547cf73ad3_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_lesson13_8c_1a5142ea286f09abcefcc9d8d1ad681811"/>    <section>
+    <title>glPrint()</title>
+<indexterm><primary>glPrint</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>glPrint</secondary></indexterm>
+<para><computeroutput>GLvoid glPrint (char * text)</computeroutput></para><para>
+
+<para>Fonction glPrint: fonction affichant le texte transmis en paramètre sur la fenêtre OpenGL. </para>
+</para>
+
+<para>This function print text on OpenGL&apos;window</para>
+
+<para>Un seul paramètre : le texte devant être affiché à l&apos;écran. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>*text</entry>
+                                <entry>
+<para>un pointeur dur la chaîne de caractères à afficher à l&apos;écran * </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>GLvoid aucun retour. </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_a5142ea286f09abcefcc9d8d1ad681811_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_lesson13_8c_1ac8d2055368b431f82f03449410409ad0"/>    <section>
+    <title>InitGL()</title>
+<indexterm><primary>InitGL</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>InitGL</secondary></indexterm>
+<para><computeroutput>void InitGL (int Width, int Height)</computeroutput></para><para>
+
+<para>Fonction InitGL : fonction gerant les caractéristiques de base de la scéne lorsque avec des instructions OpenGL (arrière plan, profondeur, type de profondeur, ...) </para>
+</para>
+
+<para>This function initialize the basics characteristics of the scene with instructions OpenGL (background, depth, type of depth, reset of the projection matrix, ...)</para>
+
+<para>En retour les deux paramètres des nouvelles valeurs de largeur et de hauteur de la fenêtre redimensionnée. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>Width</entry>
+                                <entry>
+<para>la largeur de la fenêtre lors de l&apos;initialisation * </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>Height</entry>
+                                <entry>
+<para>la hauteur de la fenêtre lors de l&apos;initialisation * </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_ac8d2055368b431f82f03449410409ad0_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_ac8d2055368b431f82f03449410409ad0_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_lesson13_8c_1ae49b22892a1276b5e664963496a34177"/>    <section>
+    <title>keyPressed()</title>
+<indexterm><primary>keyPressed</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>keyPressed</secondary></indexterm>
+<para><computeroutput>void keyPressed (unsigned char key, int x, int y)</computeroutput></para><para>
+
+<para>Fonction keyPressed : fonction permettant de connaître quelle touche a été tapée au clavier. </para>
+</para>
+
+<para>This function inform caller with key pressed.</para>
+
+<para>Le premier paarmètre en retour de cette fonction correspond à la touche précédemment appuyée. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>key</entry>
+                                <entry>
+<para>la touche appuyée * </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>une position x au niveau du clavier * </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>une position y au niveau du clavier * </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>void aucun retour. </para>
+</formalpara>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_ae49b22892a1276b5e664963496a34177_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_lesson13_8c_1a29fd6b15a498074df9565150f5212475"/>    <section>
+    <title>KillFont()</title>
+<indexterm><primary>KillFont</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>KillFont</secondary></indexterm>
+<para><computeroutput>GLvoid KillFont (GLvoid )</computeroutput></para><para>
+
+<para>Fonction KillFont : fonction détruisant la zone mémoire dédiée à la fonte de cacactère. </para>
+</para>
+
+<para>This function construct font of character with instructions Wayland to use in window OpenGL</para>
+
+<para>Aucun paramètre dans ce cas de figure car tout est géré directement à l&apos;intérieur de cette fonction de construction / chargement. <formalpara><title>Returns</title>
+
+<para>GLvoid aucun retour. </para>
+</formalpara>
+</para>
+    </section><anchor xml:id="_lesson13_8c_1a3c04138a5bfe5d72780bb7e82a18e627"/>    <section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main (int argc, char ** argv)</computeroutput></para><para>
+
+<para>Programme Main obligatoire pour les programmes sous Linux (OpenGL en mode console). </para>
+</para>
+
+<para>Comments manageable by Doxygen</para>
+
+<para>Programme principal de lancement de l&apos;application qui appelle ensuite toutes les fonctions utiles OpenGL et surtout glut. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>argc</entry>
+                                <entry>
+<para>le nombre de paramètres de la ligne de commande. </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>argv</entry>
+                                <entry>
+<para>un pointeur sur le tableau des différents paramètres de la ligne de commande. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>int un entier permettant de connaître la statut du lancement du programme. </para>
+</formalpara>
+</para>
+
+<para>This Code initialize the context of windows on Wayland with glut.</para>
+
+<para>Appel de la fonction glutInit : fonction Glut d&apos;initialisation</para>
+
+<para>En entrée de cette fonction, les paramètres de la ligne de commande. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>argc</entry>
+                                <entry>
+<para>le nombre de paramètres mis à disposition * </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>argv</entry>
+                                <entry>
+<para>Hle tableau des différents paramètres mis à disposition *</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code initialize le mode d&apos;affichage défini avec une fonction glut.</para>
+
+<para>Appel de la fonction glutInitDisplayMode(: fonction Glut initialisant le mode d&apos;affichage.</para>
+
+<para>En entrée de cette fonction, des paramètres séparés par des &quot;ou logique&quot;. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>const</entry>
+                                <entry>
+<para>une succession de paramètres séparés par des &quot;ou logique&quot;.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code initialize the dimensions (width &amp; height) of the window into screen.</para>
+
+<para>Appel de la fonction glutInitWindowSize : fonction Glut initialisant la position de la fenêtre dans l&apos;écran.</para>
+
+<para>En entrée de cette fonction, les deux paramètres X et Y correspondant à la taille de la fenêtre dans l&apos;écran (deux dimensions) 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>X</entry>
+                                <entry>
+<para>la largeur de la fenêtre en x</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code initialize the position of the window into screen.</para>
+
+<para>Appel de la fonction glutInitWindowPosition : fonction Glut initialisant la position de la fenêtre dans l&apos;écran.</para>
+
+<para>En entrée de cette fonction, les deux paramètres X et Y de positionnement de la fenêtre dans l&apos;écran (deux dimensions) 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>X</entry>
+                                <entry>
+<para>le positionnement de la fenêtre en x </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>Y</entry>
+                                <entry>
+<para>le positionnement de la fenêtre en y</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code create windows on Wayland with glut.</para>
+
+<para>Appel de la fonction glutCreateWindow : fonction Glut créant une fenêtre Wayland avec glut.</para>
+
+<para>En entrée de cette fonction, l&apos;identification de la fenêtre (.id. son nom). 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>tittle</entry>
+                                <entry>
+<para>le nom de la fenêtre </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>int l&apos;identifiant entier de la fenêtre créee.</para>
+</formalpara>
+This Code rely the internal function DrawGLScene at the display function of glut.</para>
+
+<para>Appel de la fonction glutDisplayFunc : fonction Glut permettant d&apos;activer la fonction interne d&apos;affichage.</para>
+
+<para>En entrée de cette fonction, l&apos;adresse de la fonction interne appellée . 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>&amp;function</entry>
+                                <entry>
+<para>l&apos;adresse de la fonction interne d&apos;affichage.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code rely the internal function DrawGLScene at the Idle Function of glut.</para>
+
+<para>Appel de la fonction glutIdleFunc : fonction d&apos;attente de Glut permettant d&apos;activer la fonction interne d&apos;affichage.</para>
+
+<para>En entrée de cette fonction, l&apos;adresse de la fonction interne appellée . 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>&amp;function</entry>
+                                <entry>
+<para>l&apos;adresse de la fonction interne d&apos;affichage.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code rely the internal function ResizeGLScene at the reshape function of glut.</para>
+
+<para>Appel de la fonction glutReshapeFunc : fonction Glut permettant d&apos;activer la fonction interne de changement des dimensions d&apos;affichage.</para>
+
+<para>En entrée de cette fonction, l&apos;adresse de la fonction interne appellée. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>&amp;ResizeGLScene</entry>
+                                <entry>
+<para>l&apos;adresse de la fonction interne traitant des changements de dimension de l&apos;affichage.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code rely the internal function keyPressed at the keyboard function of glut (normal touchs).</para>
+
+<para>Appel de la fonction glutKeyboardFunc : fonction Glut permettant de recupérer la touche appuyée sur le clavier (touches normales).</para>
+
+<para>En entrée de cette fonction, l&apos;adresse de la fonction interne gérant les appuis sur le clavier. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>&amp;keyPressed</entry>
+                                <entry>
+<para>l&apos;adresse de la fonction interne gérant les appuis sur le clavier (touches normales).</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code initialize les paramètres d&apos;affichage OpenGL.</para>
+
+<para>Appel de la fonction InitGL : fonction d&apos;initialisation de la taille de la fenêtre d&apos;affichage OpenGL (la même que celle de glut).</para>
+
+<para>En entrée de cette fonction, les deux paramètres X et Y correspondant à la taille de la fenêtre OpenGL dans l&apos;écran (deux dimensions) 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>X</entry>
+                                <entry>
+<para>la largeur de la fenêtre en x </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>Y</entry>
+                                <entry>
+<para>la hauteur de la fenêtre en y</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This Code run the permanently wait loop of events.</para>
+
+<para>Appel de la fonction glutMainLoop : fonction lancant la boucle d&apos;attente des événements sous glut.</para>
+
+<para>Aucun paramètre en entrée ni en sortie.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_lesson13_8c_1aaeedc5c1c90eff3a2950f1a2dbbdac6c"/>    <section>
+    <title>ReSizeGLScene()</title>
+<indexterm><primary>ReSizeGLScene</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>ReSizeGLScene</secondary></indexterm>
+<para><computeroutput>void ReSizeGLScene (int Width, int Height)</computeroutput></para><para>
+
+<para>Fonction ReSizeGLScene : fonction gerant les nouvelles dimensions de la scéne lorsque l&apos;utilisateur agit sur un redimensionnement de la fenêtre. </para>
+</para>
+
+<para>This function manage the new dimension of the scene when resize of windows with instructions OpenGL</para>
+
+<para>En retour les deux paramètres des nouvelles valeurs de largeur et de hauteur de la fenêtre redimensionnée. 
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>Width</entry>
+                                <entry>
+<para>la nouvelle largeur de la fenêtre redimensionnée * </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>Height</entry>
+                                <entry>
+<para>la nouvelle hauteur de la fenêtre redimensionnée * </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_aaeedc5c1c90eff3a2950f1a2dbbdac6c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson13_8c_aaeedc5c1c90eff3a2950f1a2dbbdac6c_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_lesson13_8c_1ae4cbdc51d2d504c24c15b22cf9861e8d"/>    <section>
+    <title>base</title>
+<indexterm><primary>base</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>base</secondary></indexterm>
+<para><computeroutput>GLuint base</computeroutput></para>    </section><anchor xml:id="_lesson13_8c_1a59cefa520aeacb29855dd1153f4b0efa"/>    <section>
+    <title>cnt1</title>
+<indexterm><primary>cnt1</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>cnt1</secondary></indexterm>
+<para><computeroutput>GLfloat cnt1</computeroutput></para>    </section><anchor xml:id="_lesson13_8c_1a2498a8c276b89c99342a1f4ac31e4670"/>    <section>
+    <title>cnt2</title>
+<indexterm><primary>cnt2</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>cnt2</secondary></indexterm>
+<para><computeroutput>GLfloat cnt2</computeroutput></para>    </section><anchor xml:id="_lesson13_8c_1ae9fb3d4767f6255c70dcd5123bbf2f54"/>    <section>
+    <title>level_debug</title>
+<indexterm><primary>level_debug</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>level_debug</secondary></indexterm>
+<para><computeroutput>char* level_debug</computeroutput></para>    </section><anchor xml:id="_lesson13_8c_1af7a035f1a720fb7a4a279410f376800b"/>    <section>
+    <title>nFullScreen</title>
+<indexterm><primary>nFullScreen</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>nFullScreen</secondary></indexterm>
+<para><computeroutput>int nFullScreen =0</computeroutput></para>    </section><anchor xml:id="_lesson13_8c_1a65ba7a0b8164c01b33d92b9ab0f2af03"/>    <section>
+    <title>window</title>
+<indexterm><primary>window</primary><secondary>lesson13.c</secondary></indexterm>
+<indexterm><primary>lesson13.c</primary><secondary>window</secondary></indexterm>
+<para><computeroutput>int window</computeroutput></para></section>
+</section>
+</section>

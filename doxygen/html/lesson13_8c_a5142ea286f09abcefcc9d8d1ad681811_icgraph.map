@@ -1,0 +1,5 @@
+<map id="glPrint" name="glPrint">
+<area shape="rect" id="node1" title="Fonction glPrint: fonction affichant le texte transmis en paramètre sur la fenêtre OpenGL." alt="" coords="259,5,317,32"/>
+<area shape="rect" id="node2" href="$lesson13_8c.html#a3f50a3778a5799e1dd9cf4547cf73ad3" title="Fonction DrawGLScene : fonction generant l&#39;affichage attendu avec des instructions OpenGL." alt="" coords="104,5,211,32"/>
+<area shape="rect" id="node3" href="$lesson13_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Programme Main obligatoire pour les programmes sous Linux (OpenGL en mode console)." alt="" coords="5,5,56,32"/>
+</map>

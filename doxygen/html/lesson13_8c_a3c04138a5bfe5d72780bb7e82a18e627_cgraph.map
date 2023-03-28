@@ -1,0 +1,10 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title="Programme Main obligatoire pour les programmes sous Linux (OpenGL en mode console)." alt="" coords="5,107,56,133"/>
+<area shape="rect" id="node2" href="$lesson13_8c.html#a3f50a3778a5799e1dd9cf4547cf73ad3" title="Fonction DrawGLScene : fonction generant l&#39;affichage attendu avec des instructions OpenGL." alt="" coords="110,5,217,32"/>
+<area shape="rect" id="node4" href="$logger_8c.html#abd2d19eeef46a8184a2302d33c6c7397" title=" " alt="" coords="274,81,345,108"/>
+<area shape="rect" id="node5" href="$lesson13_8c.html#ac8d2055368b431f82f03449410409ad0" title="Fonction InitGL : fonction gerant les caractéristiques de base de la scéne lorsque avec des instructi..." alt="" coords="135,208,192,235"/>
+<area shape="rect" id="node7" href="$lesson13_8c.html#ae49b22892a1276b5e664963496a34177" title="Fonction keyPressed : fonction permettant de connaître quelle touche a été tapée au clavier." alt="" coords="118,157,209,184"/>
+<area shape="rect" id="node8" href="$lesson13_8c.html#aaeedc5c1c90eff3a2950f1a2dbbdac6c" title="Fonction ReSizeGLScene : fonction gerant les nouvelles dimensions de la scéne lorsque l&#39;utilisateur a..." alt="" coords="104,56,223,83"/>
+<area shape="rect" id="node3" href="$lesson13_8c.html#a5142ea286f09abcefcc9d8d1ad681811" title="Fonction glPrint: fonction affichant le texte transmis en paramètre sur la fenêtre OpenGL." alt="" coords="280,5,339,32"/>
+<area shape="rect" id="node6" href="$lesson13_8c.html#aa90fba1d494d9474c883fbb29fe0ed53" title="Fonction BuildFont : fonction chargeant une fonte de caractères à l&#39;aide d&#39;instruction Wayland pour u..." alt="" coords="271,208,348,235"/>
+</map>

@@ -1,0 +1,3 @@
+/home/thierry/Sources/Opengl/Lesson13/build.cmake/clang32/Release/CMakeFiles/lesson13.dir
+/home/thierry/Sources/Opengl/Lesson13/build.cmake/clang32/Release/CMakeFiles/edit_cache.dir
+/home/thierry/Sources/Opengl/Lesson13/build.cmake/clang32/Release/CMakeFiles/rebuild_cache.dir
