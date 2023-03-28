@@ -1,0 +1,161 @@
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de g�n�ration 	: 
+Lancement d'une g�n�ration batch pour le compilateur gcc 11.3.0 32 bits
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de génération  	: console
+GCC 11.3.0 32 bits : Genération console de l'application lesson13 en mode : Debug
+GCC 11.3.0 32 bits : Fin de genération de l'application lesson13 en mode : Debug
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de génération  	: console
+GCC 11.3.0 32 bits : Genération console de l'application lesson13 en mode : Release
+GCC 11.3.0 32 bits : Fin de genération de l'application lesson13 en mode : Release
+Lancement d'une g�n�ration batch pour le compilateur gcc 11.3.0 64 bits
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de génération  	: console
+GCC 11.3.0 64 bits : Genération console de l'application lesson13 en mode : Debug
+GCC 11.3.0 64 bits : Fin de genération de l'application lesson13 en mode : Debug
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de génération  	: console
+GCC 11.3.0 64 bits : Genération console de l'application lesson13 en mode : Release
+GCC 11.3.0 64 bits : Fin de genération de l'application lesson13 en mode : Release
+Lancement d'une g�n�ration batch pour le compilateur clang 14.0.6 32 bits
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de génération  	: console
+clang 14.0.6 32 bits : Genération console de l'application lesson13 en mode : Debug
+clang 14.0.6 32 bits : Fin de genération de l'application lesson13 en mode : Debug
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de génération  	: console
+clang 14.0.6 32 bits : Genération console de l'application lesson13 en mode : Release
+clang 14.0.6 32 bits : Fin de genération de l'application lesson13 en mode : Release
+Lancement d'une g�n�ration batch pour le compilateur clang 14.0.6 32 bits
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de génération  	: console
+clang 14.0.6 64 bits : Genération console de l'application lesson13 en mode : Debug
+clang 14.0.6 64 bits : Fin de genération de l'application lesson13 en mode : Debug
+Directory des sources : /home/thierry/Sources/Opengl/Lesson13
+Nom de l'application  : lesson13
+Type de génération  	: console
+clang 14.0.6 64 bits : Genération console de l'application lesson13 en mode : Release
+clang 14.0.6 64 bits : Fin de genération de l'application lesson13 en mode : Release
+        Tableau récapitulatif de la taille des exécutables générés pour le projet : lesson13
+  Debug GCC 32b     :  29.8 KB et sa date dernière modification Tue Mar 28 17:49:23 2023 -> ./bingcc32/Debug/lesson13.exe.
+  Release GCC 32b   :  13.3 KB et sa date dernière modification Tue Mar 28 17:49:24 2023 -> ./bingcc32/Release/lesson13.exe.
+  Debug GCC 64b     :  35.8 KB et sa date dernière modification Tue Mar 28 17:49:24 2023 -> ./bingcc64/Debug/lesson13.exe.
+  Release GCC 64b   :  22.1 KB et sa date dernière modification Tue Mar 28 17:49:24 2023 -> ./bingcc64/Release/lesson13.exe.
+  Debug CLANG 32b   :  28.2 KB et sa date dernière modification Tue Mar 28 17:49:24 2023 -> ./binclang32/Debug/lesson13.exe.
+  Release CLANG 32b :  13.7 KB et sa date dernière modification Tue Mar 28 17:49:24 2023 -> ./binclang32/Release/lesson13.exe.
+  Debug CLANG 64b   :  33.8 KB et sa date dernière modification Tue Mar 28 17:49:24 2023 -> ./binclang64/Debug/lesson13.exe.
+  Release CLANG 64b :  18.7 KB et sa date dernière modification Tue Mar 28 17:49:25 2023 -> ./binclang64/Release/lesson13.exe.
+Tableau récapitulatif des différents checksums générés pour le projet : lesson13
+Calcul des cheksums du fichier : ./bingcc32/Debug/lesson13.exe.
+Checksum CRC32  is 80549971.
+Checksum MD5 is 89a2392a5793f1d58e4d15b2e219febf.
+Checksum SHA256 is 78c92aa6f4f9400057f5ed4d16b9e5b025a247a8a66ee7c9dab97d21ef1e2d5b.
+Checksum SHA512 is fc1a438ca24765879fa1c6317de6bd9667b6e0c3a3f6a74f25876e05722e47708ea0f0aab9c5f6f41802f652936a58f515eb4803da0259d2bd100c2df190c739.
+Checksum RipeMD160 is b4e4d0468013969ce0833c0e1524ba582fbc9635.
+Checksum BLAKE2B is 8e9f14ebba1c3b3dc92b940b0a2ad84164aceec48619f69654cc6249a3a138623b93c2f9fa60ca470f3065888919fbbcbb19ffc7ae490acadebf14db80bd32bb.
+Calcul des cheksums du fichier : ./bingcc32/Release/lesson13.exe.
+Checksum CRC32  is 9e20a20d.
+Checksum MD5 is df6539e01e0c376c89888004aad32493.
+Checksum SHA256 is 667ae65f74fdc089229b3c16ae8de4b4317df925c0cf9a6c19c9f98202a86aaa.
+Checksum SHA512 is aecdc6efb5bca4c288000cbabfd4176fd80ebb25c9e4f7563c7643b727f59284134a6ca6e30e009b77bd3353906bb568da0c36a97b0655295e8c81ffab47354f.
+Checksum RipeMD160 is 2b4610ab44ece5db242ca4d03166f4ab81d79143.
+Checksum BLAKE2B is 6500782c40eed0eabb6089ce46afb54eb3cf13fa9fddbaecf0e87c08d29cd642efbb53ef927816cfa10408afb56fc5eda1223553c09ea4bebda424c5359767db.
+Calcul des cheksums du fichier : ./bingcc64/Debug/lesson13.exe.
+Checksum CRC32  is 92eb5aff.
+Checksum MD5 is 2f6cf63cc802769eef80ad770be8454d.
+Checksum SHA256 is de657670acb127964528dfa196f2b2d4a13dcb896481c33bcaba093d8e05a23c.
+Checksum SHA512 is 41cccfc38b5eaea4258daa0266c6f23809f05296004f9921fe307c2696b147a8c0aa8e2d3d191c17d2b4df995f0f3898e040b27beddc0f6f227af853f799d790.
+Checksum RipeMD160 is 65c6503b977f1e51b5d75ab03138cc1e48f74229.
+Checksum BLAKE2B is 22389ca46c0df682d8868d156842011a1b47c45d4b9fcc5a9115fbfe9df07483442f794848d2952b0e429c0dca14244aac279843055e603e7834620c127e7798.
+Calcul des cheksums du fichier : ./bingcc64/Release/lesson13.exe.
+Checksum CRC32  is 834e6473.
+Checksum MD5 is 1e865dba6ce6e5089f8ed8d0ecbcc9b5.
+Checksum SHA256 is 86bb91e3b428a45d1362ee5618c21c13585ffd5e49d6803538c1b17b74016706.
+Checksum SHA512 is 545a80a48e80c453b8da585707b0fcec42ac726096d6fc1e632da9b19d63bc64b5a81e02a3db7e9dde9483ead131b01a51b4e4115ab913204de7341de5d5f814.
+Checksum RipeMD160 is 3ca2ffc134bfa415693e2388a3a05f4b5cfa9e3b.
+Checksum BLAKE2B is 773ab50ab7dd595d9124ef085f6ac74ef877451edf98d7af172f09114747dd9e98c36012d99d373cb97d55b7f2d0e1241b5c810b654f8d681ef5f7557b05d508.
+Calcul des cheksums du fichier : ./binclang32/Debug/lesson13.exe.
+Checksum CRC32  is 507badae.
+Checksum MD5 is eb53562d9882ad27a63998d59467a95a.
+Checksum SHA256 is e886f8cee8d7f5da7224dd27d9ab835461e5d22e7aa5d1dffb4cc977163d462d.
+Checksum SHA512 is b7052997bf83789e4efd111752601118b82c7733f843d5ba4478a30d6ed0b7b4bdcac625579ad64d1f1122d0958d8434867c0913496283c33a39530e0040f13c.
+Checksum RipeMD160 is 20e5eb4a58b878c53898847236e3b0030a835595.
+Checksum BLAKE2B is e0775c621477ba7592530f0cff03f3b8447b49429d55fbd142c9aafd21167df14d6c895f0a7500fbf4af0ee6a817280b93cdf6f2dbb570c17bd90faa6a1fe08a.
+Calcul des cheksums du fichier : ./binclang32/Release/lesson13.exe.
+Checksum CRC32  is 59c3c149.
+Checksum MD5 is f3cab5fd18b8aaa2476c9b4c0e968737.
+Checksum SHA256 is 6a5c9891bd5c5f1987a038ece0612a121769976977f6c319fea4b5114f9a6943.
+Checksum SHA512 is 5bb7047d04085705c74fbb24624315ec3fd8cfbb045f395a7fccf5436b11219ac0e53a9a3b182d97fce6b580f19ec3297434fdeb5e0cc320f782ec7c8381dbea.
+Checksum RipeMD160 is f280733e28e7e6ee22d05bf7088aa28ee7200c32.
+Checksum BLAKE2B is 2a2d15346bbc449600972f75d0dc5075c8dfab5fad38ce7e00a30a2b07229e68b56e64765841a2c02716b127b14e071eb4f0a1f86091277b53415e6a299b4a6b.
+Calcul des cheksums du fichier : ./binclang64/Debug/lesson13.exe.
+Checksum CRC32  is 64a02260.
+Checksum MD5 is 1d7eae7595311450010e10727a2598b3.
+Checksum SHA256 is 5d78f34bfbad0ce744fab7c247a439b16932bf39a824f9d6d8b40f79d9c6cd0f.
+Checksum SHA512 is 81690030848eca28476fdebfa724c1be333054e707805146baec00bf68de6dd4b251b07913afccee1e188bf8e23737854a521bcbad4c28c1fb755819391defe5.
+Checksum RipeMD160 is 805caabafef253b06d2b10fee79f43593e6e9a3f.
+Checksum BLAKE2B is cbb4d0883802f21e442d58655dc15e7439f76f8dab9e97e6fdc856068dfd3c42b6ba70afb32e2e2f323441cbf827a0be1fc158d7c8ce709881a9e323ed5b4959.
+Calcul des cheksums du fichier : ./binclang64/Release/lesson13.exe.
+Checksum CRC32  is e6f331f8.
+Checksum MD5 is d9fdaa54ad0c3ece277af2c3d1c404a7.
+Checksum SHA256 is 02a3711518035a8f2130cf5dafd7c33f404eebc0010e3b06b3b71206fbe5ee43.
+Checksum SHA512 is 5c6679b27baa60ed623393d0ddf8cc9aa701df1676e61e3df66ac60e86c83100995bc0145f7c522a01a4dfdabbb3f7e8466b17dbb859ed40ae55c820941bab49.
+Checksum RipeMD160 is 19b73b6a8137520ada5f5d3875d44dc4ef373c69.
+Checksum BLAKE2B is e128d9c8b4d054051e7554c78b53b4762a3fe74ce0461d1b5eab1356df55957157057f2d48aac688896789afb86d7b2bb17601598edf2205f3d3a0ce737ce76f.
+Jour : 28
+Mois : 03
+Ann?e : 2023
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=fr_FR.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz (A0652),ASM,AES-NI)
+
+Scanning the drive:
+89 folders, 510 files, 2979014 bytes (2910 KiB)
+
+Creating archive: lesson13_2023-03-28_src.7z
+
+Items to compress: 599
+
+
+Files read from disk: 510
+Archive size: 477257 bytes (467 KiB)
+Everything is Ok
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=fr_FR.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz (A0652),ASM,AES-NI)
+
+Scanning the drive:
+125 folders, 611 files, 3666416 bytes (3581 KiB)
+
+Creating archive: lesson13-2023-03_28_all.tar
+
+Items to compress: 736
+
+
+Files read from disk: 736
+Archive size: 4226560 bytes (4128 KiB)
+Everything is Ok
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=fr_FR.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz (A0652),ASM,AES-NI)
+
+Scanning the drive:
+1 file, 4226560 bytes (4128 KiB)
+
+Creating archive: lesson13_2023-03-28_all.7z
+
+Items to compress: 1
+
+
+Files read from disk: 1
+Archive size: 528778 bytes (517 KiB)
+Everything is Ok
